@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ea40210c.css",
+    "main.js": "/static/js/main.8c52d760.js",
+    "static/media/bannerImgTwo.jpg": "/static/media/bannerImgTwo.bc1bdb910ead16c65197.jpg",
+    "static/media/bannerImgFour.jpg": "/static/media/bannerImgFour.8f7fc6b56e74dba2b6f9.jpg",
+    "static/media/bannerImgOne.jpg": "/static/media/bannerImgOne.efb3d39101f7ef77d616.jpg",
+    "static/media/bannerImgThree.jpg": "/static/media/bannerImgThree.c80809bb40bee5c34372.jpg",
+    "static/media/bannerImgFive.jpg": "/static/media/bannerImgFive.aa945e25375bfdee385f.jpg",
+    "static/media/logo.png": "/static/media/logo.1c9be0b254d3ff1dc9e9.png",
+    "static/media/logo_dark.png": "/static/media/logo_dark.5bae70c1cc5cecebfe1e.png",
+    "static/media/emptyCart.png": "/static/media/emptyCart.230e4848b62fb3cab325.png",
+    "static/media/india_flg.webp": "/static/media/india_flg.fd353b193c382ee9e442.webp",
+    "index.html": "/index.html",
+    "main.ea40210c.css.map": "/static/css/main.ea40210c.css.map",
+    "main.8c52d760.js.map": "/static/js/main.8c52d760.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea40210c.css",
+    "static/js/main.8c52d760.js"
+  ]
+}
