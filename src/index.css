@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lobster&family=Poppins:wght@100;300;400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .headerHover{
+        @apply px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100;
+    }
+    .footerLink{
+        @apply text-sm font-titleFont tracking-wide hover:text-gray-100 cursor-pointer hover:underline duration-150;
+    }
+    .productLi{
+        @apply text-gray-600 text-sm w-full border-b-[1px] border-b-gray-400 flex items-center justify-end gap-2 hover:text-black font-medium hover:border-b-gray-700 cursor-pointer duration-300;
+    }
+}
+
