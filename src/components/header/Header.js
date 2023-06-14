@@ -10,7 +10,7 @@ import HeaderBottom from "./HeaderBottom";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuth, signOut } from "firebase/auth";
-import { singnoutUser } from "../../redux/amazonSlice";
+import { singnoutUser} from "../../redux/amazonSlice";
 function Header() {
   const auth = getAuth();
   const dispatch = useDispatch();
@@ -122,7 +122,7 @@ function Header() {
             <p className="text-xs font-semibold mt-3 text-whiteText">
               Cart
               <span className="absolute text-xs px-1 top-0 left-6 -mt-1 font-semibold text-amazone_blue bg-amazone_yellow rounded-full">
-                {products.length}
+                {(products)?products.length:0}
               </span>
             </p>
           </div>

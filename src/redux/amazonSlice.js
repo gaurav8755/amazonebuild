@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
     products:[],
-    unserInfo:null,
+    userInfo:null,  
 }
 export const amazonSlice = createSlice({
     name:"amazon",
@@ -37,9 +36,8 @@ export const amazonSlice = createSlice({
         },
         singnoutUser:(state)=>{
             state.userInfo = null;
-        }
-
-
+            state.products = null;
+        },
     }
 })
 export const{
