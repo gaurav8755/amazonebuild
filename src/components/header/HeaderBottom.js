@@ -41,12 +41,14 @@ function HeaderBottom() {
             >
               <div className="w-full bg-amazone_light text-white py-2 px-6 flex items-center gap-4">
                 {userInfo ? (
-                  <img className = "w-8 object-contain rounded-full border p-1" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="userProfile" />
+                  <img
+                    className="w-8 object-contain rounded-full border p-1"
+                    src={userInfo.image}
+                    alt="userProfile"
+                  />
                 ) : (
                   <AccountCircleIcon />
-                )
-               
-                }
+                )}
 
                 {userInfo ? (
                   <h3 className="font-titlefont font-bold text-lg tracking-wide">

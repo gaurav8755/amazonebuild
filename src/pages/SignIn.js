@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import GoogleIcon from "@mui/icons-material/Google";
 import { logodark } from "../assets/index";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { ThreeDots } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "../redux/amazonSlice";
 function SignIn() {
   const dispatch = useDispatch();
   const auth = getAuth();
+  const provider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
@@ -24,6 +26,25 @@ function SignIn() {
     setPassword(e.target.value);
     setErrPassword("");
   };
+  const handleGoogleLogin = (e) => {
+    e.preventDefault();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      const user = result.user;
+      dispatch(
+        setUserInfo({
+          _id: user.uid,
+          userName: user.displayName,
+          email: user.email,
+          image: user.photoURL,
+        })
+      );
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    navigate("/");
+  };
   const handleLogin = (e) => {
     e.preventDefault();
     if (!email) {
@@ -38,18 +59,20 @@ function SignIn() {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          dispatch(setUserInfo({
-            _id:user.uid,
-            userName:user.displayName,
-            email:user.email,
-            image:user.photoURL
-          }))
-          
+          dispatch(
+            setUserInfo({
+              _id: user.uid,
+              userName: user.displayName,
+              email: user.email,
+              image: user.photoURL,
+            })
+          );
+
           setLoader(false);
           setSuccessMsg("Logged in Successfully! Welcome you back");
           setTimeout(() => {
-            navigate("/")
-          },800);
+            navigate("/");
+          }, 800);
         })
         .catch((error) => {
           setLoader(false);
@@ -70,7 +93,9 @@ function SignIn() {
       <div className="w-full bg-gray-100 pb-10 pt-6">
         {successMsg ? (
           <div className="w-full flex justify-center items-center py-32">
-               <p className="border-[1px] border-green-600 text-green-500 font-titleFont text-lg font-semibold px-6 py-2">{successMsg}</p>
+            <p className="border-[1px] border-green-600 text-green-500 font-titleFont text-lg font-semibold px-6 py-2">
+              {successMsg}
+            </p>
           </div>
         ) : (
           <form className="w-[350px] mx-auto flex flex-col items-center gap-4">
@@ -138,6 +163,18 @@ function SignIn() {
                     />
                   </div>
                 )}
+                <div className="flex flex-col items-center justify-center">
+                  <p className="text-sm text-gray-600">or</p>
+                  <button
+                    onClick={handleGoogleLogin}
+                    className=" flex gap-14 w-full py-1.5 text-sm font-normal rounded-sm bg-gradient-to-t from-[#f7dfa5] to-[#f0c14b] hover:bg-gradient-to-b border border-zinc-400  active:border-yellow-800 active:shadow-amazonInput"
+                  >
+                    <span className="mx-2">
+                      <GoogleIcon />
+                    </span>{" "}
+                    <span>Sign in with Google</span>
+                  </button>
+                </div>
               </div>
               <p className="text-xs text-balck leading-4 mt-4">
                 By Continuing, you agree to Amazone's{" "}

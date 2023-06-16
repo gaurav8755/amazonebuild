@@ -36,7 +36,7 @@ export const amazonSlice = createSlice({
         },
         singnoutUser:(state)=>{
             state.userInfo = null;
-            state.products = null;
+            state.products = [];
         },
     }
 })
